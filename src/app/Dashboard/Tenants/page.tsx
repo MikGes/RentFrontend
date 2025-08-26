@@ -117,8 +117,8 @@ const Tenants: React.FC = () => {
         e.preventDefault();
 
         const url = isEditing
-            ? `http://localhost:3001/tenant/${form._id}`
-            : "http://localhost:3001/tenant/create";
+            ? `https://rentmanagement.onrender.com/tenant/${form._id}`
+            : "https://rentmanagement.onrender.com/tenant/create";
 
         const method = isEditing ? "PUT" : "POST";
 

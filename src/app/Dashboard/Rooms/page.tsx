@@ -38,7 +38,7 @@ const RoomsPage: React.FC = () => {
         const fetchRooms = async () => {
             try {
                 setLoading(true);
-                const res = await fetch("http://localhost:3001/rooms", {
+                const res = await fetch("https://rentmanagement.onrender.com/rooms", {
                     method: "GET",
                     credentials: "include"
 
@@ -87,7 +87,7 @@ const RoomsPage: React.FC = () => {
         if (!window.confirm("Are you sure you want to delete this room?")) return;
 
         try {
-            const res = await fetch(`http://localhost:3001/rooms/delete/${id}`, {
+            const res = await fetch(`https://rentmanagement.onrender.com/rooms/delete/${id}`, {
                 method: "DELETE",
                 credentials: "include"
 
@@ -110,8 +110,8 @@ const RoomsPage: React.FC = () => {
         e.preventDefault();
 
         const url = isEditing
-            ? `http://localhost:3001/rooms/${form._id}`
-            : "http://localhost:3001/rooms/create";
+            ? `https://rentmanagement.onrender.com/rooms/${form._id}`
+            : "https://rentmanagement.onrender.com/rooms/create";
 
         const method = isEditing ? "PUT" : "POST";
 

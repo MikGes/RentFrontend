@@ -28,11 +28,11 @@ const RoomAssignmentDashboard: React.FC = () => {
     const fetchData = async () => {
       try {
         const [roomsRes, tenantsRes] = await Promise.all([
-          fetch("http://localhost:3001/rooms/", {
+          fetch("https://rentmanagement.onrender.com/rooms/", {
             method: "GET",
             credentials: "include",
           }), // ← This returns populated tenants
-          fetch("http://localhost:3001/tenant/", {
+          fetch("https://rentmanagement.onrender.com/tenant/", {
             method: "GET",
             credentials: "include"
           }),
@@ -82,7 +82,7 @@ const RoomAssignmentDashboard: React.FC = () => {
     try {
       // Call your existing endpoint
       const res = await fetch(
-        `http://localhost:3001/rooms/addTenant/${targetRoomId}/${prevRoomId}`,
+        `https://rentmanagement.onrender.com/rooms/addTenant/${targetRoomId}/${prevRoomId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
