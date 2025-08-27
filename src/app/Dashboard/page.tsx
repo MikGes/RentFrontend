@@ -23,11 +23,16 @@ const Dashboard: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+            const token = sessionStorage.getItem("jwtToken");
+
         const fetchRooms = async () => {
             try {
                 const res = await fetch("https://rentmanagement-production.up.railway.app/rooms", {
                     method: "GET",
-                    credentials: "include"
+                     headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              },
 
                 });
                 const data = await res.json();
