@@ -38,7 +38,7 @@ const RoomsPage: React.FC = () => {
         const fetchRooms = async () => {
             try {
                 setLoading(true);
-                const res = await fetch("https://rentmanagement.onrender.com/rooms", {
+                const res = await fetch("https://rentmanagement-production.up.railway.app/rooms", {
                     method: "GET",
                     credentials: "include"
 

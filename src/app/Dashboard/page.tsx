@@ -25,7 +25,7 @@ const Dashboard: React.FC = () => {
     useEffect(() => {
         const fetchRooms = async () => {
             try {
-                const res = await fetch("https://rentmanagement.onrender.com/rooms", {
+                const res = await fetch("https://rentmanagement-production.up.railway.app/rooms", {
                     method: "GET",
                     credentials: "include"
 

@@ -37,7 +37,7 @@ const LoginPage = () => {
         setError("");
 
         try {
-            const res = await fetch("https://rentmanagement.onrender.com/auth/login", {
+            const res = await fetch("https://rentmanagement-production.up.railway.app/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

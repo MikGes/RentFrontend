@@ -28,11 +28,11 @@ const RoomAssignmentDashboard: React.FC = () => {
     const fetchData = async () => {
       try {
         const [roomsRes, tenantsRes] = await Promise.all([
-          fetch("https://rentmanagement.onrender.com/rooms/", {
+          fetch("https://rentmanagement-production.up.railway.app/rooms/", {
             method: "GET",
             credentials: "include",
           }), // ← This returns populated tenants
-          fetch("https://rentmanagement.onrender.com/tenant/", {
+          fetch("https://rentmanagement-production.up.railway.app/tenant/", {
             method: "GET",
             credentials: "include"
           }),
