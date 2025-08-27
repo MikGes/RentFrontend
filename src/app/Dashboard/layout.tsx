@@ -43,7 +43,7 @@ export default function DashboardLayout({
     }, [router]);
 
     const handleLogout = () => {
-        Cookies.remove("auth_token");
+        sessionStorage.removeItem("jwtToken");
         router.push("/Login");
     };
 
