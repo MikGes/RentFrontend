@@ -52,7 +52,8 @@ const LoginPage = () => {
             } else {
             //     // Save token in cookie
             //  document.cookie = `auth_token=${data.access_token}; path=/; max-age=${60 * 60 * 24}; samesite=None; Secure`;
-              router.push("/Dashboard")
+            sessionStorage.setItem("jwtToken", data.access_token); 
+            router.push("/Dashboard")
                 // redirect or save token
             }
         } catch (err) {

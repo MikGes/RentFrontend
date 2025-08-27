@@ -26,15 +26,23 @@ const RoomAssignmentDashboard: React.FC = () => {
   // Fetch rooms (with populated tenants) and all tenants
   useEffect(() => {
     const fetchData = async () => {
+      const token = sessionStorage.getItem("jwtToken");
       try {
         const [roomsRes, tenantsRes] = await Promise.all([
           fetch("https://rentmanagement-production.up.railway.app/rooms/", {
-            method: "GET",
-            credentials: "include",
+            method: "GET",    
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              }
+
           }), // ← This returns populated tenants
           fetch("https://rentmanagement-production.up.railway.app/tenant/", {
             method: "GET",
-            credentials: "include"
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              }
           }),
         ]);
 
@@ -81,13 +89,17 @@ const RoomAssignmentDashboard: React.FC = () => {
 
     try {
       // Call your existing endpoint
+      const token = sessionStorage.getItem("jwtToken")
       const res = await fetch(
         `https://rentmanagement.onrender.com/rooms/addTenant/${targetRoomId}/${prevRoomId}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+         headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              },
           body: JSON.stringify({ id: tenantId }),
-          credentials: "include"
+          
         }
       );
 

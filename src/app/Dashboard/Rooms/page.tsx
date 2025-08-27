@@ -37,10 +37,14 @@ const RoomsPage: React.FC = () => {
     useEffect(() => {
         const fetchRooms = async () => {
             try {
+      const token = sessionStorage.getItem("jwtToken");
                 setLoading(true);
                 const res = await fetch("https://rentmanagement-production.up.railway.app/rooms", {
                     method: "GET",
-                    credentials: "include"
+                    headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              }
 
                 });
                 const data = await res.json();
@@ -87,9 +91,13 @@ const RoomsPage: React.FC = () => {
         if (!window.confirm("Are you sure you want to delete this room?")) return;
 
         try {
+            const token = sessionStorage.getItem("jwtToken");
             const res = await fetch(`https://rentmanagement.onrender.com/rooms/delete/${id}`, {
                 method: "DELETE",
-                credentials: "include"
+                headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              }
 
             });
 
@@ -116,9 +124,14 @@ const RoomsPage: React.FC = () => {
         const method = isEditing ? "PUT" : "POST";
 
         try {
+      const token = sessionStorage.getItem("jwtToken");
+
             const res = await fetch(url, {
                 method,
-                headers: { "Content-Type": "application/json" },
+               headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              },
                 body: JSON.stringify(form),
                 credentials: "include"
 

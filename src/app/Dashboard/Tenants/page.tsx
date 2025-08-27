@@ -123,9 +123,13 @@ const Tenants: React.FC = () => {
         const method = isEditing ? "PUT" : "POST";
 
         try {
+            const token = sessionStorage.getItem("jwtToken");
             const res = await fetch(url, {
                 method,
-                headers: { "Content-Type": "application/json" },
+                 headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              },
                 body: JSON.stringify(form),
                 credentials: "include"
 

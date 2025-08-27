@@ -21,7 +21,7 @@ export default function DashboardLayout({
     const [username, setUsername] = useState<string | null>(null);
 
     useEffect(() => {
-        const token = Cookies.get("auth_token");
+        const token = sessionStorage.getItem("jwtToken");
 
         if (!token) {
             router.push("/Login");
