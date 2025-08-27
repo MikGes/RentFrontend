@@ -51,7 +51,8 @@ const LoginPage = () => {
                 setError(data.message || "Login failed. Please check your credentials.");
             } else {
                 // Save token in cookie
-                document.cookie = `auth_token=${data.access_token}; path=/; max-age=${60 * 60 * 24};  samesite=none`;
+             document.cookie = `auth_token=${data.access_token}; path=/; max-age=${60 * 60 * 24}; samesite=None; Secure`;
+
                 router.push("/Dashboard")
                 // redirect or save token
             }
