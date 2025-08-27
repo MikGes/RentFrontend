@@ -46,13 +46,18 @@ const Tenants: React.FC = () => {
     }, [error]);
     // Fetch tenants
     useEffect(() => {
+            const token = sessionStorage.getItem("jwtToken");
+
         const fetchTenants = async () => {
             setLoading(true);
             try {
                 setError("");
-                const res = await fetch("http://localhost:3001/tenant", {
+                const res = await fetch("https://rentmanagement-production.up.railway.app/tenant", {
                     method: "GET",
-                    credentials: "include"
+                    headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              },
 
                 });
                 const data = await res.json();
@@ -93,11 +98,15 @@ const Tenants: React.FC = () => {
     // Delete Tenant
     const handleDelete = async (id: string) => {
         if (!window.confirm("Are you sure you want to delete this tenant?")) return;
+        const token = sessionStorage.getItem("jwtToken");
 
         try {
-            const res = await fetch(`http://localhost:3001/tenant/delete/${id}`, {
+            const res = await fetch(`https://rentmanagement-production.up.railway.app/delete/${id}`, {
                 method: "DELETE",
-                credentials: "include"
+                headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+              },
 
             });
 
