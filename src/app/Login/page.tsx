@@ -23,6 +23,8 @@ if (token) {
         }
     } catch (err) {
         console.error("Invalid token");
+        setLoading(false)
+        alert("Nice try, Invalid token anyway...")
     }
 }
 
