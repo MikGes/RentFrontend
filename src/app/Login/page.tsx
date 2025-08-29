@@ -18,7 +18,7 @@ const LoginPage = () => {
         if (token) {
             // Optional: validate token format or decode it
             try {
-                const payload = JSON.parse(atob(token.split(".")[1])); // decode JWT payload
+                const payload = JSON.parse(atob(token)); // decode JWT payload
                 const isExpired = payload.exp * 1000 < Date.now();
                 setLoading(false)
 
