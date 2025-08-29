@@ -14,7 +14,7 @@ const LoginPage = () => {
     const [error, setError] = useState("");
     const router = useRouter()
     useEffect(() => {
-        const token = Cookies.get("auth_token");
+       const token = sessionStorage.getItem("jwtToken");
         if (token) {
             // Optional: validate token format or decode it
             try {
