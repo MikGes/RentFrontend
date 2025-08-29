@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Home, User, Eye, EyeOff } from "lucide-react"; // icons
 import { useRouter } from "next/navigation";
-
-import Cookies from "js-cookie";
+import jwt from 'jsonwebtoken';
 import Skeleton from "@/Components/Skeleton";
 const LoginPage = () => {
     const [username, setUsername] = useState("");
@@ -15,18 +14,18 @@ const LoginPage = () => {
     const router = useRouter()
     useEffect(() => {
        const token = sessionStorage.getItem("jwtToken");
-        if (token) {
-            // Optional: validate token format or decode it
-            try {
-                const payload = JSON.parse(atob(token)); // decode JWT payload
-                const isExpired = payload.exp * 1000 < Date.now();
-                setLoading(false)
-
-                if (!isExpired) router.push("/Dashboard")
-            } catch (err) {
-                setLoading(false);
-            }
+        
+if (token) {
+    try {
+        const payload:any = jwt.verify(token, process.env.JWTSECRET!!);
+        if (payload.exp * 1000 > Date.now()) {
+            router.push("/Dashboard");
         }
+    } catch (err) {
+        console.error("Invalid token");
+    }
+}
+
         else {
             setLoading(false)
         }
