@@ -101,7 +101,7 @@ const Tenants: React.FC = () => {
         const token = sessionStorage.getItem("jwtToken");
 
         try {
-            const res = await fetch(`https://rentmanagement-production.up.railway.app/delete/${id}`, {
+            const res = await fetch(`https://rentmanagement-production.up.railway.app/tenant/delete/${id}`, {
                 method: "DELETE",
                 headers: {
                 "Authorization": `Bearer ${token}`,

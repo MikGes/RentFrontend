@@ -91,7 +91,7 @@ const RoomAssignmentDashboard: React.FC = () => {
       // Call your existing endpoint
       const token = sessionStorage.getItem("jwtToken")
       const res = await fetch(
-        `https://rentmanagement.onrender.com/rooms/addTenant/${targetRoomId}/${prevRoomId}`,
+        `https://rentmanagement-production.up.railway.app/rooms/addTenant/${targetRoomId}/${prevRoomId}`,
         {
           method: "PUT",
          headers: {
